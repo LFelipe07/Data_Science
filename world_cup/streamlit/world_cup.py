@@ -24,11 +24,11 @@ strenght = b0 + b1*fifa
 # Function to define victory, draw and defeat
 def Results(goals1, goals2):
     if goals1 > goals2:
-        results = 'V'
+        results = 'victory'
     elif goals2 > goals1:
-        results = 'D'
+        results = 'defeat'
     else:
-        results = 'E'
+        results = 'draw'
     return results
 
 # Usando a metrica POISSON para calcular as probabilidades
@@ -56,8 +56,8 @@ def MatchProbability(team1, team2):
     l1, l2 = PoissonMean(team1, team2)
     d1, d2 = Distribution(l1), Distribution(l2)
     matrix = np.outer(d1, d2)
-    victory = np.tril(matrix).sum()-np.trace(matrix) #Soma o triangulo inferior / sum the bottom triangle
-    defeat = np.triu(matrix).sum()-np.trace(matrix) #Soma o triangulo inferior / sum the top triangle
+    victory = np.tril(matrix).sum()-np.trace(matrix) #Soma o triangulo inferior / sum the lower triangle
+    defeat = np.triu(matrix).sum()-np.trace(matrix) #Soma o triangulo inferior / sum the upper triangle
     draw = 1 - (victory + defeat)
     
     probs = np.around([victory, draw, defeat], 3)
@@ -94,11 +94,11 @@ def Game(team1, team2):
     l1, l2 = PoissonMean(team1, team2) 
     goals1 = int(np.random.poisson(lam = l1, size = 1))
     goals2 = int(np.random.poisson(lam = l2, size = 1))
-    saldo1 = goals1 - goals2
-    saldo2 = goals2 - goals1 # Ou -saldo1
+    diff1 = goals1 - goals2
+    diff2 = goals2 - goals1 # Ou -saldo1
     points1, points2, result = Points(goals1, goals2)
     placar ='{}X{}'.format(goals1, goals2)
-    return [goals1, goals2, saldo1, saldo2, points1, points2, result, placar]
+    return [goals1, goals2, diff1, diff2, points1, points2, result, placar]
 
 
 # app
