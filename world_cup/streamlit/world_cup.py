@@ -81,7 +81,7 @@ def Points(goals1, goals2):
     result = Results(goals1, goals2)
     if result == 'V':
         points1, points2 = 3, 0
-    elif results == 'D':
+    elif result == 'D':
         points1, points2 = 0, 3
     else:
         points1, points2 = 1, 1
