@@ -5,7 +5,7 @@ from scipy.stats import poisson
 
 st.title("Predicting World Cup matches with AI")
 
-teams = pd.read_excel("DadosCopaDoMundoQatar2022.xlsx", engine='openpyxl', sheet_name='selecoes', index_col=0)
+teams = pd.read_excel("world_cup/DadosCopaDoMundoQatar2022.xlsx", sheet_name='selecoes', index_col=0)
 
 # Definindo as forças do time
 # Defining team strengths
