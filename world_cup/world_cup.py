@@ -138,5 +138,5 @@ st.table(matrix.applymap(aux))
 st.markdown("----")
 st.markdown("World Cup Match probabilities")
 
-wcmatch = pd.read_excel("OutputWorldCupGameEstimates.xlsx", index_col=0)
+wcmatch = pd.read_excel("world_cup/OutputWorldCupGameEstimates.xlsx", index_col=0)
 st.table(wcmatch[['grupo', 'seleção1', 'seleção2', 'Victory', 'Draw','Defeat']])
